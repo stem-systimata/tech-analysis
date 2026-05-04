@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quando o Jornalismo Errou o Futuro — 15 Previsões Falhas da Mídia Tech</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #0d0d0f;
+    --surface: #141416;
+    --surface2: #1c1c1f;
+    --surface3: #242428;
+    --border: rgba(255,255,255,0.07);
+    --border-bright: rgba(255,255,255,0.15);
+    --text: #e8e6e0;
+    --text-muted: #8a8880;
+    --text-dim: #5a5856;
+    --amber: #f0a500;
+    --amber-dim: rgba(240,165,0,0.15);
+    --amber-border: rgba(240,165,0,0.3);
+    --red: #e05050;
+    --red-dim: rgba(224,80,80,0.12);
+    --teal: #2eb87e;
+    --teal-dim: rgba(46,184,126,0.12);
+    --blue: #4a9eff;
+    --blue-dim: rgba(74,158,255,0.12);
+    --purple: #9b72f0;
+    --purple-dim: rgba(155,114,240,0.12);
+    --coral: #f07050;
+    --coral-dim: rgba(240,112,80,0.12);
+    --green: #6abf69;
+    --green-dim: rgba(106,191,105,0.12);
+    --accent: #f0a500;
+  }
+
+  /* ─── LIGHT THEME ─── */
+  html[data-theme="light"] {
+    --bg: #f5f4f0;
+    --surface: #ffffff;
+    --surface2: #f0eeea;
+    --surface3: #e5e3de;
+    --border: rgba(0,0,0,0.08);
+    --border-bright: rgba(0,0,0,0.18);
+    --text: #1a1917;
+    --text-muted: #5a5856;
+    --text-dim: #9a9896;
+    --amber: #b87800;
+    --amber-dim: rgba(184,120,0,0.1);
+    --amber-border: rgba(184,120,0,0.25);
+    --red: #b83030;
+    --red-dim: rgba(184,48,48,0.08);
+    --teal: #1a8f60;
+    --teal-dim: rgba(26,143,96,0.08);
+    --blue: #1a6fc0;
+    --blue-dim: rgba(26,111,192,0.08);
+    --purple: #6040c0;
+    --purple-dim: rgba(96,64,192,0.08);
+    --coral: #c04830;
+    --coral-dim: rgba(192,72,48,0.08);
+    --green: #2e8a2e;
+    --green-dim: rgba(46,138,46,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse, rgba(240,165,0,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--amber);
+  }
+  .hero-sub {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 640px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--amber);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── CONTAINER ─── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ─── INTRO ─── */
+  .intro-section {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+  }
+  .intro-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+  }
+  .intro-card h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--amber);
+    margin-bottom: 0.6rem;
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+  .intro-card p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .intro-lead {
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--text-muted);
+    max-width: 840px;
+  }
+  .intro-lead strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+  blockquote.pull-quote {
+    border-left: 3px solid var(--amber);
+    padding: 0.5rem 1.25rem;
+    margin: 1.5rem 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--text);
+    background: var(--amber-dim);
+    border-radius: 0 6px 6px 0;
+  }
+
+  /* ─── FILTERS ─── */
+  .controls {
+    padding: 1.5rem 0;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--bg);
+  }
+  .controls-label {
+    font-size: 11px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-right: 4px;
+  }
+  .filter-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    padding: 5px 13px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover { border-color: var(--border-bright); color: var(--text); }
+  .filter-btn.active {
+    background: var(--amber-dim);
+    border-color: var(--amber-border);
+    color: var(--amber);
+    font-weight: 500;
+  }
+  .sort-select {
+    margin-left: auto;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    outline: none;
+  }
+  .count-badge {
+    margin-left: auto;
+    font-size: 11px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--text-dim);
+  }
+
+  /* ─── MOSAIC GRID ─── */
+  .timeline-section {
+    padding: 2rem 0;
+  }
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    min-height: 180px;
+    position: relative;
+  }
+  .card:hover {
+    border-color: var(--border-bright);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+  .card-header {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 16px;
+    gap: 8px;
+    user-select: none;
+  }
+  .card-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-year {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1;
+  }
+  .cat-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+  .card-outlet {
+    font-size: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .card-claim {
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--text-muted);
+    font-style: italic;
+    flex: 1;
+  }
+  .card-claim::before { content: '"'; }
+  .card-claim::after { content: '"'; }
+  .card-bottom-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+  .error-pill {
+    font-size: 9.5px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .expand-hint {
+    font-size: 10px;
+    color: var(--text-dim);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* ─── MODAL ─── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    backdrop-filter: blur(4px);
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border-bright);
+    border-radius: 14px;
+    max-width: 700px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    animation: modalIn 0.22s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.95) translateY(12px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-header {
+    padding: 20px 20px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .modal-year-badge {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .modal-header-text { flex: 1; }
+  .modal-outlet {
+    font-size: 11px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .modal-claim {
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--text);
+  }
+  .modal-claim::before { content: '"'; }
+  .modal-claim::after { content: '"'; }
+  .modal-close {
+    background: var(--surface3);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 18px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.15s;
+    font-family: inherit;
+  }
+  .modal-close:hover { background: var(--surface2); color: var(--text); }
+  .modal-body { padding: 16px 20px 20px; }
+  .card-body { display: none; }
+
+  .versus {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .box {
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .box-lbl {
+    font-size: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 7px;
+  }
+  .box-txt {
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .box-pred { background: var(--red-dim); border: 1px solid rgba(224,80,80,0.2); }
+  .box-pred .box-lbl { color: var(--red); }
+  .box-pred .box-txt { color: #c8a0a0; }
+  .box-real { background: var(--teal-dim); border: 1px solid rgba(46,184,126,0.2); }
+  .box-real .box-lbl { color: var(--teal); }
+  .box-real .box-txt { color: #90c8b0; }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 10px;
+  }
+  .source-note {
+    margin-left: auto;
+    font-size: 11px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--text-dim);
+  }
+
+  /* ─── CATEGORY COLORS ─── */
+  .cat-ai .card-year { color: var(--purple); }
+  .cat-ai .cat-dot { background: var(--purple); }
+  .cat-ai .card-outlet { color: var(--purple); }
+  .tag-ai { background: var(--purple-dim); color: var(--purple); }
+  .pill-ai { background: var(--purple-dim); color: var(--purple); }
+
+  .cat-av .card-year { color: var(--blue); }
+  .cat-av .cat-dot { background: var(--blue); }
+  .cat-av .card-outlet { color: var(--blue); }
+  .tag-av { background: var(--blue-dim); color: var(--blue); }
+  .pill-av { background: var(--blue-dim); color: var(--blue); }
+
+  .cat-ev .card-year { color: var(--teal); }
+  .cat-ev .cat-dot { background: var(--teal); }
+  .cat-ev .card-outlet { color: var(--teal); }
+  .tag-ev { background: var(--teal-dim); color: var(--teal); }
+  .pill-ev { background: var(--teal-dim); color: var(--teal); }
+
+  .cat-crypto .card-year { color: var(--amber); }
+  .cat-crypto .cat-dot { background: var(--amber); }
+  .cat-crypto .card-outlet { color: var(--amber); }
+  .tag-crypto { background: var(--amber-dim); color: var(--amber); }
+  .pill-crypto { background: var(--amber-dim); color: var(--amber); }
+
+  .cat-phone .card-year { color: var(--coral); }
+  .cat-phone .cat-dot { background: var(--coral); }
+  .cat-phone .card-outlet { color: var(--coral); }
+  .tag-phone { background: var(--coral-dim); color: var(--coral); }
+  .pill-phone { background: var(--coral-dim); color: var(--coral); }
+
+  /* ─── SPACE CATEGORY ─── */
+  .cat-space .card-year { color: var(--green); }
+  .cat-space .cat-dot { background: var(--green); }
+  .cat-space .card-outlet { color: var(--green); }
+  .tag-space { background: var(--green-dim); color: var(--green); }
+  .pill-space { background: var(--green-dim); color: var(--green); }
+
+  /* ─── PATTERNS SECTION ─── */
+  .patterns-section {
+    padding: 3rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .patterns-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+    margin-top: 1.5rem;
+  }
+  .pattern-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    transition: border-color 0.2s;
+  }
+  .pattern-card:hover { border-color: var(--amber-border); }
+  .pattern-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    color: var(--amber);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 8px;
+    opacity: 0.6;
+  }
+  .pattern-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .pattern-text {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+  .pattern-ref {
+    margin-top: 8px;
+    font-size: 11px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--text-dim);
+  }
+
+  /* ─── RESEARCH SECTION ─── */
+  .research-section {
+    padding: 3rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .research-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 1.5rem;
+  }
+  .research-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+  }
+  .research-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--amber);
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .research-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .research-card li {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+  }
+  .research-card li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--amber);
+    font-size: 11px;
+    top: 3px;
+  }
+  .research-source {
+    margin-top: 10px;
+    font-size: 11px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--text-dim);
+  }
+
+  /* ─── CHART ─── */
+  .chart-section {
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .bar-chart {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .bar-label {
+    width: 160px;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: right;
+    flex-shrink: 0;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .bar-track {
+    flex: 1;
+    background: var(--surface3);
+    border-radius: 4px;
+    height: 26px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'IBM Plex Mono', monospace;
+    transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .bar-fill.ai { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(155,114,240,0.2); }
+  .bar-fill.av { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(74,158,255,0.2); }
+  .bar-fill.ev { background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(46,184,126,0.2); }
+  .bar-fill.crypto { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(240,165,0,0.2); }
+  .bar-fill.phone { background: var(--coral-dim); color: var(--coral); border: 1px solid rgba(240,112,80,0.2); }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--text-dim);
+    margin-top: 2rem;
+  }
+  .footer a { color: var(--amber); text-decoration: none; }
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .theme-switcher {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+  .theme-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border-bright);
+    color: var(--text-muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 7px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    letter-spacing: 0.04em;
+  }
+  .theme-btn:hover {
+    background: var(--surface3);
+    color: var(--text);
+    border-color: var(--amber-border);
+  }
+  .theme-btn .theme-icon { font-size: 13px; }
+  .theme-btn .theme-chevron { font-size: 8px; opacity: 0.6; transition: transform 0.2s; }
+  .theme-switcher.open .theme-chevron { transform: rotate(180deg); }
+  .theme-menu {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--surface);
+    border: 1px solid var(--border-bright);
+    border-radius: 10px;
+    overflow: hidden;
+    min-width: 140px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    z-index: 100;
+    animation: menuUp 0.18s ease;
+  }
+  @keyframes menuUp {
+    from { opacity: 0; transform: translateX(-50%) translateY(6px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+  .theme-switcher.open .theme-menu { display: block; }
+  .theme-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.12s, color 0.12s;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    letter-spacing: 0.04em;
+  }
+  .theme-option:hover { background: var(--surface2); color: var(--text); }
+  .theme-option.active { color: var(--amber); font-weight: 500; }
+  .theme-option .opt-icon { font-size: 14px; width: 18px; text-align: center; }
+  .theme-option .opt-check { margin-left: auto; font-size: 10px; opacity: 0; }
+  .theme-option.active .opt-check { opacity: 1; }
+
+  /* ─── UTILITY ─── */
+  .hidden { display: none !important; }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .mt-4 { margin-top: 1.5rem; }
+
+  @media (max-width: 700px) {
+    .intro-grid, .versus, .research-grid { grid-template-columns: 1fr; }
+    .timeline { grid-template-columns: repeat(2, 1fr); }
+    .bar-label { width: 100px; }
+    .hero { padding: 2rem 1rem 1.5rem; }
+    .hero-stats { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">Análise · Jornalismo Tecnológico · 2010–2023</div>
+  <h1>Quando a Grande Mídia <em>Errou</em> o Futuro da Tecnologia</h1>
+  <p class="hero-sub">
+    15 previsões documentadas de veículos como NYT, TechCrunch, Wired, The Guardian e Business Insider sobre IA, carros elétricos, blockchain, veículos autônomos e exploração espacial — e o que realmente aconteceu.
+  </p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">16</div><div class="stat-label">Previsões Falhas</div></div>
+    <div class="stat"><div class="stat-num">11+</div><div class="stat-label">Grandes Veículos</div></div>
+    <div class="stat"><div class="stat-num">13</div><div class="stat-label">Anos de Erros</div></div>
+    <div class="stat"><div class="stat-num">66.000%</div><div class="stat-label">Maior Erro (Bitcoin)</div></div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<div class="container">
+  <section class="intro-section">
+    <div class="section-eyebrow">Introdução e Contexto</div>
+    <h2>Por que a mídia especializada erra tanto sobre o futuro?</h2>
+
+    <p class="intro-lead mt-4">
+      Existe uma ironia profunda em se tratar jornalistas tecnológicos como oráculos do futuro. As redações que cobrem inovação têm um histórico sistemático de <strong>errar em ambas as direções</strong>: ora superestimam tecnologias que nunca decolarão, ora descartam como impossíveis exatamente as inovações que irão transformar o mundo. Mas a segunda categoria — as previsões catastróficas de fracasso sobre tecnologias que depois dominaram o mercado — merece atenção especial, porque seus efeitos são mais insidiosos.
+    </p>
+
+    <blockquote class="pull-quote">
+      "Jornalistas não erram por serem preguiçosos ou mal-intencionados, mas porque o design institucional do jornalismo — velocidade, incentivos orientados por audiência e especialização técnica rasa — colide com a realidade caótica e incerta do progresso tecnológico."
+    </blockquote>
+
+    <p class="intro-lead">
+      As pesquisas acadêmicas documentadas nos anexos deste relatório revelam um padrão estrutural: <strong>os ciclos de hype da mídia não são acidentais</strong>. Eles emergem de lógicas de notícia que privilegiam o drama, a novidade e o clique — seja na forma de euforia ("revolução iminente") ou de ceticismo radical ("isso nunca vai funcionar"). Ambas as modalidades de erro têm a mesma raiz: a incapacidade estrutural de acompanhar a lenta, não-linear e imprevisível curva do desenvolvimento tecnológico real.
+    </p>
+
+    <p class="intro-lead" style="margin-top: 1rem;">
+      O que este relatório documenta são os 16 casos mais emblemáticos do período 2010–2023 em que grandes veículos jornalísticos — muitos deles considerados referências em tecnologia — declararam tecnologias como falhas, impraticáveis ou impossíveis. Em todos os casos, a realidade provou o contrário. Os erros não são triviais: em um caso, analistas declararam que o Bitcoin "iria a zero" quando estava a US$ 110 por unidade — a moeda depois ultrapassou US$ 73.000.
+    </p>
+
+    <div class="intro-grid mt-4">
+      <div class="intro-card">
+        <h3>O Problema Estrutural (Gell-Mann Amnésia)</h3>
+        <p>Repórteres dependem pesadamente de press releases, declarações de fundadores e pontos da indústria. O efeito "Gell-Mann Amnésia" — nomeado por Michael Crichton — faz com que seja fácil repetir afirmações otimistas (ou pessimistas) como fatos, mesmo quando os próprios praticantes do campo são mais céticos ou mais otimistas. (Fonte: Perplexity/Why journalists are wrong)</p>
+      </div>
+      <div class="intro-card">
+        <h3>Câmaras de Eco e Viés Confirmatório</h3>
+        <p>Em vez de investigar de forma independente, jornalistas frequentemente repetem o que outros veículos estão dizendo, criando uma câmara de eco de consenso sobre tecnologias "inevitáveis" — ou condenadas. Quando todos citam uns aos outros, pequenos equívocos se transformam em grandes mispredições amplamente divulgadas. (Fonte: Consensus/How unrealistic expectations)</p>
+      </div>
+      <div class="intro-card">
+        <h3>Ciclos de Hype e Investimentos (Gartner)</h3>
+        <p>O modelo Gartner descreve o padrão: gatilho tecnológico → pico de expectativas infladas → vale da decepção → rampa da iluminação → platô de produtividade. Estudos da Kriechbaum et al. (2021) e Shi & Herniman (2022) mostram que esses ciclos não são apenas descritivos — eles desviam capital, talento e atenção de formas que podem atrasar ou acelerar inovações reais. (Fonte: Consensus/Media hype cycles)</p>
+      </div>
+      <div class="intro-card">
+        <h3>O "Breakthrough Syndrome" na Cobertura Tecnológica</h3>
+        <p>Padrões clássicos de reportagem científica e tecnológica enfatizam "corridas", "avanços" e eventos dramáticos isolados em vez de processos lentos e cumulativos. Análise da MIT Technology Review revelou que poucas tecnologias previstas se tornaram grandes mercados, enquanto muitos grandes sucessos nunca foram previstos. (Fonte: Consensus/Why journalists are wrong about tech)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <span class="controls-label">Filtrar:</span>
+    <button class="filter-btn active" data-cat="all">Todos</button>
+    <button class="filter-btn" data-cat="ai">IA / ML</button>
+    <button class="filter-btn" data-cat="av">Veículos Autônomos</button>
+    <button class="filter-btn" data-cat="ev">Carros Elétricos</button>
+    <button class="filter-btn" data-cat="crypto">Cripto / Blockchain</button>
+    <button class="filter-btn" data-cat="phone">Smartphones</button>
+    <button class="filter-btn" data-cat="space">Exploração Espacial</button>
+    <span class="count-badge" id="count-badge">16 casos</span>
+  </div>
+
+  <!-- TIMELINE MOSAIC -->
+  <section class="timeline-section">
+    <div class="timeline" id="timeline">
+
+      <div class="card cat-phone" data-cat="phone" data-id="1" onclick="openModal(this)">
+        <div class="card-header">
+          <div class="card-top-row">
+            <span class="card-year">2010</span>
+            <span class="cat-dot"></span>
+          </div>
+          <div class="card-outlet">Bloomberg BusinessWeek</div>
+          <div class="card-claim">O iPhone jamais funcionará como dispositivo corporativo de verdade — carece de segurança e gestão que o enterprise exige.</div>
+          <div class="card-bottom-row">
+            <span class="error-pill pill-phone">Erro catastrófico</span>
+            <span class="expand-hint">ver ↗</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="versus">
+            <div class="box box-pred"><div class="box-lbl">⚠ Previsão (2010)</div><div class="box-txt">Múltiplos analistas declararam o iOS fundamentalmente inadequado para uso empresarial: sem controles reais de segurança, sem gestão de dispositivos móveis, impossível para TI implantar em escala. Conclusão: o BlackBerry manteria o mercado corporativo permanentemente.</div></div>
+            <div class="box box-real"><div class="box-lbl">✓ Realidade (2015+)</div><div class="box-txt">A Apple lançou APIs de MDM e segurança corporativa. Em 2014, +90% das Fortune 500 usavam iPhones. A Apple hoje gera mais receita do enterprise do que toda a capitalização que o BlackBerry já teve. O BlackBerry saiu do negócio de smartphones em 2016.</div></div>
+          </div>
+          <div class="card-footer"><span class="tag tag-phone">Smartphones</span><span class="source-note">Bloomberg BusinessWeek, ~2010</span></div>
+        </div>
+      </div>
+
+      <div class="card cat-ai" data-cat="ai" data-id="2" onclick="openModal(this)">
+        <div class="card-header">
+          <div class="card-top-row"><span class="card-year">2011</span><span class="cat-dot"></span></div>
+          <div class="card-outlet">The Atlantic</div>
+          <div class="card-claim">O Watson da IBM é um truque de palco — teatro impressionante, mas sem compreensão real. Não vai se traduzir em IA do mundo real que importe.</div>
+          <div class="card-bottom-row"><span class="error-pill pill-ai">Erro massivo</span><span class="expand-hint">ver ↗</span></div>
+        </div>
+        <div class="card-body">
+          <div class="versus">
+            <div class="box box-pred"><div class="box-lbl">⚠ Previsão (2011)</div><div class="box-txt">Céticos — incluindo colunistas de The Atlantic e Slate — argumentaram que a vitória do Watson no Jeopardy! era um truque de indexação, não inteligência. PLN real, diziam, estava a décadas de qualquer utilidade.</div></div>
+            <div class="box box-real"><div class="box-lbl">✓ Realidade (2016+)</div><div class="box-txt">A vitória do Watson validou arquiteturas NLP precursoras de transformers. Em 2016, o AlphaGo derrotou o campeão mundial de Go. Em 2022, modelos GPT passavam em exames da OAB. O "truque de palco" foi a semente de uma indústria de US$ 1 trilhão.</div></div>
+          </div>
+          <div class="card-footer"><span class="tag tag-ai">IA / ML</span><span class="source-note">The Atlantic / Slate, 2011</span></div>
+        </div>
+      </div>
+
+      <div class="card cat-space" data-cat="space" data-id="3" onclick="openModal(this)">
+        <div class="card-header">
+          <div class="card-top-row"><span class="card-year">2011</span><span class="cat-dot"></span></div>
+          <div class="card-outlet">Arianespace / Aviation Week</div>
+          <div class="card-claim">A reusabilidade de foguetes da SpaceX é um sonho. O que eles podem fazer, nós podemos fazer. Eles não são super-homens.</div>
+          <div class="card-bottom-row"><span class="error-pill pill-space">Erro histórico</span><span class="expand-hint">ver ↗</span></div>
+        </div>
+        <div class="card-body">
+          <div class="versus">
+            <div class="box box-pred"><div class="box-lbl">⚠ Previsão (2004–2015)</div><div class="box-txt">Richard Bowles (Arianespace) disse que a SpaceX "vende principalmente um sonho". Em 2014, NASA e CNES declararam — via Aviation Week — que os desafios tornavam a reutilização inviável. A Scientific American ainda apontava, em 2015, que "nenhum sistema economicamente viável emergiu apesar de décadas de esforço".</div></div>
+            <div class="box box-real"><div class="box-lbl">✓ Realidade (2015–2024)</div><div class="box-txt">Em dezembro de 2015, o Falcon 9 pousou verticalmente pela primeira vez. Em 2024, o booster B1067 completou 34 voos reutilizáveis. O custo por kg para órbita caiu de ~US$ 54.000 (Shuttle) para ~US$ 2.700. A própria Arianespace contratou a SpaceX para lançar satélites europeus em 2024.</div></div>
+          </div>
+          <div class="card-footer"><span class="tag tag-space">Exploração Espacial</span><span class="source-note">Arianespace (2004), Aviation Week (2014), Scientific American (2015)</span></div>
+        </div>
+      </div>
+
+      <div class="card cat-ev" data-cat="ev" data-id="4" onclick="openModal(this)">
+        <div class="card-header">
+          <div class="card-top-row"><span class="card-year">2013</span><span class="cat-dot"></span></div>
+          <div class="card-outlet">New York Times (John Broder)</div>
+          <div class="card-claim">A ansiedade de autonomia da Tesla é real e insolúvel — carros elétricos são impraticáveis para qualquer coisa além de deslocamentos urbanos.</div>
+          <div class="card-bottom-row"><span class="error-pill pill-ev">Erro muito alto</span><span class="expand-hint">ver ↗</span></div>
+        </div>
+        <div class="card-body">
+          <div class="versus">
+            <div class="box box-pred"><div class="box-lbl">⚠ Previsão (fev 2013)</div><div class="box-txt">O repórter John Broder publicou avaliação demolidora do Model S, afirmando que o carro ficou sem energia. Os logs da Tesla contradisseram afirmações-chave, gerando uma das maiores polêmicas do jornalismo tecnológico da década.</div></div>
+            <div class="box box-real"><div class="box-lbl">✓ Realidade (2023)</div><div class="box-txt">A Tesla expandiu a rede Supercharger para +50.000 estações globais. A autonomia do Model S ultrapassou 640 km. Vendas globais de EVs atingiram 14 milhões de unidades em 2023. A Tesla tornou-se a montadora mais valiosa do mundo.</div></div>
+          </div>
+          <div class="card-footer"><span class="tag tag-ev">Carros Elétricos</span><span class="source-note">New York Times, fevereiro de 2013</span></div>
+        </div>
+      </div>
+
+      <div class="card cat-crypto" data-cat="crypto" data-id="5" onclick="openModal(this)">
+        <div class="card-header">
+          <div class="card-top-row"><span class="card-year">2013</span><span class="cat-dot"></span></div>
+          <div class="card-outlet">Forbes / Analistas de Wall Street</div>
+          <div class="card-claim">O Bitcoin é um esquema Ponzi destinado ao colapso — não tem valor intrínseco e vai a zero.</div>
+          <div class="card-bottom-row"><span class="error-pill pill-crypto">Erro: 66.000%+</span><span class="expand-hint">ver ↗</span></div>
+        </div>
+        <div class="card-body">
+          <div class="versus">
+            <div class="box box-pred"><div class="box-lbl">⚠ Previsão (2013)</div><div class="box-txt">Quando o Bitcoin atingiu US$ 110, analistas do Merrill Lynch e Credit Suisse emitiram previsões de "vai a zero". Vários declararam a moeda morta após o colapso do Mt. Gox em 2014.</div></div>
+            <div class="box box-real"><div class="box-lbl">✓ Realidade (2024)</div><div class="box-txt">O Bitcoin atingiu máxima acima de US$ 73.000 em 2024 — alta de +66.000% a partir de US$ 110. BlackRock, Fidelity e MicroStrategy detêm bilhões. A SEC aprovou ETFs de Bitcoin em janeiro de 2024.</div></div>
+          </div>
+          <div class="card-footer"><span class="tag tag-crypto">Cripto / Blockchain</span><span class="source-note">Forbes, Merrill Lynch, Credit Suisse — 2013</span></div>
+        </div>
+      </div>
+
+      <div class="card cat-av" data-cat="av" data-id="6" onclick="openModal(this)">
+        <div class="card-header">
+          <div class="card-top-row"><span class="card-year">2014</span><span class="cat-dot"></span></div>
+          <div class="card-outlet">MIT Technology Review</div>
+          <div class="card-claim">Carros sem motorista estão mais distantes do que você pensa — os fatores técnicos e humanos tornam a autonomia total essencialmente impossível.</div>
+          <div class="card-bottom-row"><span class="error-pill pill-av">Erro alto</span><span class="expand-hint">ver ↗</span></div>
+        </div>
+        <div class="card-body">
+          <div class="versus">
+            <div class="box box-pred"><div class="box-lbl">⚠ Previsão (out 2013–2014)</div><div class="box-txt">O MIT Technology Review argumentou que limitações de sensores, handoff humano-máquina e edge cases tornavam carros autônomos impossíveis. O professor John Leonard foi amplamente citado sobre as barreiras fundamentais.</div></div>
+            <div class="box box-real"><div class="box-lbl">✓ Realidade (2023)</div><div class="box-txt">A Waymo lançou o primeiro serviço de táxi totalmente autônomo em Phoenix em 2020. Em 2023, completou +1 milhão de km sem motorista. O Apollo Go da Baidu rodou táxis autônomos em Wuhan em escala.</div></div>
+          </div>
+          <div class="card-footer"><span class="tag tag-av">Veículos Autônomos</span><span class="source-note">MIT Technology Review, outubro de 2013</span></div>
+        </div>
+      </div>
+
+      <div class="card cat-ai" data-cat="ai" data-id="7" onclick="openModal(this)">
+        <div class="card-header">
+          <div class="card-top-row"><span class="card-year">2015</span><span class="cat-dot"></span></div>
+          <div class="card-outlet">Wired / The New Yorker</div>
+          <div class="card-claim">O deep learning é exageradamente hypeado — essas redes neurais têm limites matemáticos fundamentais e vão bater num teto antes de alcançar qualquer coisa parecida com inteligência ampla.</div>
+          <div class="card-bottom-row"><span class="error-pill pill-ai">Erro massivo</span><span class="expand-hint">ver ↗</span></div>
+        </div>
+        <div class="card-body">
+          <div class="versus">
+            <div class="box box-pred"><div class="box-lbl">⚠ Previsão (2014–2015)</div><div class="box-txt">Gary Marcus (NYU) argumentou na Wired e The New Yorker que o deep learning tinha tetos duros. A narrativa: esse ciclo de hype colapsaria como os anteriores. Redes com milhões de parâmetros teriam overfitting catastrófico.</div></div>
+            <div class="box box-real"><div class="box-lbl">✓ Realidade (2023)</div><div class="box-txt">AlphaGo derrotou o campeão de Go em 2016. GPT-4 passou em exames da OAB no 90º percentil. ChatGPT atingiu 100 milhões de usuários em 2 meses — a adoção mais rápida da história. O mercado global de IA ultrapassou US$ 200 bilhões.</div></div>
+          </div>
+          <div class="card-footer"><span class="tag tag-ai">IA / ML</span><span class="source-note">Wired, The New Yorker — 2014–2015 (Gary Marcus)</span></div>
+        </div>
+      </div>
+
+      <div class="card cat-av" data-cat="av" data-id="8" onclick="openModal(this)">
+        <div class="card-header">
+          <div class="card-top-row"><span class="card-year">2015</span><span class="cat-dot"></span></div>
+          <div class="card-outlet">Business Insider</div>
+          <div class="card-claim">10 milhões de carros autônomos estarão nas estradas até 2020.</div>
+          <div class="card-bottom-row"><span class="error-pill pill-av">Erro 10.000x</span><span class="expand-hint">ver ↗</span></div>
+        </div>
+        <div class="card-body">
+          <div class="versus">
+            <div class="box box-pred"><div class="box-lbl">⚠ Previsão (2015)</div><div class="box-txt">Business Insider publicou que 10 milhões de carros autônomos estariam em circulação até 2020. The Guardian citou a BMW dizendo que motoristas poderiam "ler emails" enquanto o carro dirigia sozinho. Ford previu autonomia total até 2021, GM disse 2019.</div></div>
+            <div class="box box-real"><div class="box-lbl">✓ Realidade (2020)</div><div class="box-txt">Menos de 1.000 veículos totalmente autônomos operavam em vias públicas em 2020 — erro de 10.000x. A Ford encerrou seu programa Argo AI em 2022. A GM enfrentou escândalos de segurança em 2023.</div></div>
+          </div>
+          <div class="card-footer"><span class="tag tag-av">Veículos Autônomos</span><span class="source-note">Business Insider, 2015</span></div>
+        </div>
+      </div>
+
+      <div class="card cat-av" data-cat="av" data-id="9" onclick="openModal(this)">
+        <div class="card-header">
+          <div class="card-top-row"><span class="card-year">2015</span><span class="cat-dot"></span></div>
+          <div class="card-outlet">The Guardian</div>
+          <div class="card-claim">O passageiro médio se tornará um motorista permanente no banco de trás até 2020 — os carros autônomos são iminentes.</div>
+          <div class="card-bottom-row"><span class="error-pill pill-av">Década de atraso</span><span class="expand-hint">ver ↗</span></div>
+        </div>
+        <div class="card-body">
+          <div class="versus">
+            <div class="box box-pred"><div class="box-lbl">⚠ Previsão (2015)</div><div class="box-txt">The Guardian previu que até 2020 o "passageiro médio" seria um motorista permanente no banco de trás. Foi enquadrado não como especulação, mas como realidade de curto prazo quase certa, baseada nos programas do Google, Tesla e Uber.</div></div>
+            <div class="box box-real"><div class="box-lbl">✓ Realidade (2020–2026)</div><div class="box-txt">Em 2020, 99,9% dos carros ainda exigiam controle humano total. Mesmo em 2026, o passageiro médio ainda dirige manualmente. Autonomia Nível 4+ existe apenas em zonas geofenciadas.</div></div>
+          </div>
+          <div class="card-footer"><span class="tag tag-av">Veículos Autônomos</span><span class="source-note">The Guardian, 2015</span></div>
+        </div>
+      </div>
+
+      <div class="card cat-ev" data-cat="ev" data-id="10" onclick="openModal(this)">
+        <div class="card-header">
+          <div class="card-top-row"><span class="card-year">2016</span><span class="cat-dot"></span></div>
+          <div class="card-outlet">The Economist</div>
+          <div class="card-claim">Os EVs enfrentam problemas de custo de bateria intransponíveis — veículos elétricos de mercado de massa abaixo de US$ 35.000 não serão viáveis antes dos anos 2030.</div>
+          <div class="card-bottom-row"><span class="error-pill pill-ev">15 anos pessimista</span><span class="expand-hint">ver ↗</span></div>
+        </div>
+        <div class="card-body">
+          <div class="versus">
+            <div class="box box-pred"><div class="box-lbl">⚠ Previsão (2016)</div><div class="box-txt">The Economist argumentou que os custos de bateria — ~US$ 300/kWh — não cairiam rápido o suficiente. EVs de massa a preços competitivos foram declarados impossíveis sem química inovadora.</div></div>
+            <div class="box box-real"><div class="box-lbl">✓ Realidade (2023)</div><div class="box-txt">Custos de bateria caíram para menos de US$ 100/kWh até 2023 — queda de 70% em 7 anos. O Model 3 da Tesla foi lançado a US$ 35.000 em 2017. Em 2023, +40 modelos de EVs abaixo de US$ 45.000 disponíveis. A BYD superou a Tesla em volume.</div></div>
+          </div>
+          <div class="card-footer"><span class="tag tag-ev">Carros Elétricos</span><span class="source-note">The Economist, 2016</span></div>
+        </div>
+      </div>
+
+      <div class="card cat-ai" data-cat="ai" data-id="11" onclick="openModal(this)">
+        <div class="card-header">
+          <div class="card-top-row"><span class="card-year">2016</span><span class="cat-dot"></span></div>
+          <div class="card-outlet">The New Yorker / Gary Marcus</div>
+          <div class="card-claim">A IA jamais dominará a linguagem genuína — sistemas de deep learning não conseguem entender contexto, significado ou senso comum. Ponto final.</div>
+          <div class="card-bottom-row"><span class="error-pill pill-ai">Erro muito alto</span><span class="expand-hint">ver ↗</span></div>
+        </div>
+        <div class="card-body">
+          <div class="versus">
+            <div class="box box-pred"><div class="box-lbl">⚠ Previsão (2016–2018)</div><div class="box-txt">Gary Marcus publicou repetidamente no The New Yorker e Wired argumentando que deep learning fundamentalmente não pode alcançar compreensão de linguagem. Redes neurais eram "autocomplete glorificado" com pontos cegos estruturais.</div></div>
+            <div class="box box-real"><div class="box-lbl">✓ Realidade (2023)</div><div class="box-txt">GPT-4 pontuou no 90º percentil no Exame da OAB e 99º na Olimpíada de Biologia. Claude e Gemini analisam documentos jurídicos e raciocinam em problemas novos. O próprio Marcus reconheceu a escala do progresso.</div></div>
+          </div>
+          <div class="card-footer"><span class="tag tag-ai">IA / ML</span><span class="source-note">The New Yorker / Wired, 2016–2018 (Gary Marcus)</span></div>
+        </div>
+      </div>
+
+      <div class="card cat-crypto" data-cat="crypto" data-id="12" onclick="openModal(this)">
+        <div class="card-header">
+          <div class="card-top-row"><span class="card-year">2017</span><span class="cat-dot"></span></div>
+          <div class="card-outlet">Business Insider / Múltiplos</div>
+          <div class="card-claim">A bolha do Bitcoin estourou — nunca vai se recuperar acima de US$ 1.000. O blockchain é uma solução à procura de problema.</div>
+          <div class="card-bottom-row"><span class="error-pill pill-crypto">Erro 73x</span><span class="expand-hint">ver ↗</span></div>
+        </div>
+        <div class="card-body">
+          <div class="versus">
+            <div class="box box-pred"><div class="box-lbl">⚠ Previsão (início 2017)</div><div class="box-txt">Quando o Bitcoin negociava lateralmente em 2015–2016, a mídia declarou a bolha definitivamente encerrada. O blockchain foi ridicularizado como hype sem aplicação.</div></div>
+            <div class="box box-real"><div class="box-lbl">✓ Realidade (2017–2024)</div><div class="box-txt">Bitcoin subiu de US$ 1.000 para ~US$ 20.000 somente em 2017. Em 2024 ultrapassou US$ 73.000. O ecossistema DeFi do Ethereum superou US$ 100 bilhões. Goldman Sachs, JPMorgan e BlackRock entraram no mercado.</div></div>
+          </div>
+          <div class="card-footer"><span class="tag tag-crypto">Cripto / Blockchain</span><span class="source-note">Business Insider e múltiplos, início 2017</span></div>
+        </div>
+      </div>
+
+      <div class="card cat-ev" data-cat="ev" data-id="13" onclick="openModal(this)">
+        <div class="card-header">
+          <div class="card-top-row"><span class="card-year">2022</span><span class="cat-dot"></span></div>
+          <div class="card-outlet">Bloomberg / Wall Street Journal</div>
+          <div class="card-claim">O boom dos EVs acabou — o entusiasmo do consumidor bateu num muro e a infraestrutura de carregamento impedirá a adoção mainstream por pelo menos uma década.</div>
+          <div class="card-bottom-row"><span class="error-pill pill-ev">Erro significativo</span><span class="expand-hint">ver ↗</span></div>
+        </div>
+        <div class="card-body">
+          <div class="versus">
+            <div class="box box-pred"><div class="box-lbl">⚠ Previsão (final 2022)</div><div class="box-txt">Bloomberg e WSJ sugeriram que a transição para EVs tinha "batido num muro". Ansiedade de autonomia, desertos de carregamento e preços altos foram citados como barreiras estruturais permanentes.</div></div>
+            <div class="box box-real"><div class="box-lbl">✓ Realidade (2023–2024)</div><div class="box-txt">Vendas globais de EVs atingiram 14 milhões em 2023, crescimento de 35% a/a. A BYD superou a Tesla. A Noruega atingiu 90% de participação de EVs. A Tesla abriu sua rede Supercharger para outras marcas.</div></div>
+          </div>
+          <div class="card-footer"><span class="tag tag-ev">Carros Elétricos</span><span class="source-note">Bloomberg / Wall Street Journal, final de 2022</span></div>
+        </div>
+      </div>
+
+      <div class="card cat-av" data-cat="av" data-id="14" onclick="openModal(this)">
+        <div class="card-header">
+          <div class="card-top-row"><span class="card-year">2022</span><span class="cat-dot"></span></div>
+          <div class="card-outlet">TechCrunch (D. Etherington)</div>
+          <div class="card-claim">É hora de admitir que os carros autônomos não vão acontecer — não em nossas vidas, não em qualquer escala onipresente.</div>
+          <div class="card-bottom-row"><span class="error-pill pill-av">Refutado em 3 anos</span><span class="expand-hint">ver ↗</span></div>
+        </div>
+        <div class="card-body">
+          <div class="versus">
+            <div class="box box-pred"><div class="box-lbl">⚠ Previsão (out 2022)</div><div class="box-txt">O TechCrunch publicou que carros totalmente autônomos não aconteceriam "em nossas vidas", citando o encerramento da Ford/Argo AI como sinal definitivo de que o Nível 4 era um beco sem saída.</div></div>
+            <div class="box box-real"><div class="box-lbl">✓ Realidade (2025)</div><div class="box-txt">Em 2025, a Waymo operava táxis totalmente autônomos em 4 cidades americanas. A Tesla lançou seu robotáxi FSD em Austin. O Apollo Go da Baidu operou sem motorista de segurança em Pequim.</div></div>
+          </div>
+          <div class="card-footer"><span class="tag tag-av">Veículos Autônomos</span><span class="source-note">TechCrunch, outubro de 2022</span></div>
+        </div>
+      </div>
+
+      <div class="card cat-ai" data-cat="ai" data-id="15" onclick="openModal(this)">
+        <div class="card-header">
+          <div class="card-top-row"><span class="card-year">2022</span><span class="cat-dot"></span></div>
+          <div class="card-outlet">The Atlantic / Críticos acadêmicos</div>
+          <div class="card-claim">Grandes modelos de linguagem são papagaios estocásticos — não conseguem raciocinar e jamais serão usados em contextos de alto risco.</div>
+          <div class="card-bottom-row"><span class="error-pill pill-ai">Erro muito alto</span><span class="expand-hint">ver ↗</span></div>
+        </div>
+        <div class="card-body">
+          <div class="versus">
+            <div class="box box-pred"><div class="box-lbl">⚠ Previsão (2022)</div><div class="box-txt">A crítica dos "papagaios estocásticos" (Bender, Gebru et al.) foi amplificada pelo The Atlantic e Wired. LLMs eram "autocomplete" incapaz de raciocinar — inadequados para medicina, direito ou qualquer domínio exigente.</div></div>
+            <div class="box box-real"><div class="box-lbl">✓ Realidade (2024)</div><div class="box-txt">GPT-4 e Claude 3 foram implantados em suporte clínico, revisão jurídica (Allen & Overy, CMS) e programação (GitHub Copilot, 1,8 milhão de devs). O AlphaFold acelerou descobertas de proteínas com IA.</div></div>
+          </div>
+          <div class="card-footer"><span class="tag tag-ai">IA / ML</span><span class="source-note">The Atlantic / Wired, 2022 (Bender, Gebru et al.)</span></div>
+        </div>
+      </div>
+
+      <div class="card cat-ai" data-cat="ai" data-id="16" onclick="openModal(this)">
+        <div class="card-header">
+          <div class="card-top-row"><span class="card-year">2023</span><span class="cat-dot"></span></div>
+          <div class="card-outlet">Wired / Consenso da mídia tech</div>
+          <div class="card-claim">A geração de imagens por IA jamais será aceita em fluxos de trabalho criativos profissionais — inconsistente demais e legalmente arriscada demais.</div>
+          <div class="card-bottom-row"><span class="error-pill pill-ai">Bilhões de usuários</span><span class="expand-hint">ver ↗</span></div>
+        </div>
+        <div class="card-body">
+          <div class="versus">
+            <div class="box box-pred"><div class="box-lbl">⚠ Previsão (início 2023)</div><div class="box-txt">Após o boom do Midjourney/DALL-E, colaboradores da Wired e The Guardian declararam a geração por IA legalmente inviável para uso profissional: inconsistente demais, cheia de riscos, inferior à criatividade humana.</div></div>
+            <div class="box box-real"><div class="box-lbl">✓ Realidade (2024)</div><div class="box-txt">A Adobe integrou IA generativa ao Photoshop (250M usuários). O Canva IA gerou +3 bilhões de imagens. A McKinsey estimou US$ 2,6–4,4 trilhões de produtividade gerada. Estúdios de VFX de Hollywood adotaram em escala.</div></div>
+          </div>
+          <div class="card-footer"><span class="tag tag-ai">IA / ML</span><span class="source-note">Wired / The Guardian, início de 2023</span></div>
+        </div>
+      </div>
+
+    </div><!-- /timeline -->
+  </section>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal" id="modal">
+      <div class="modal-header" id="modal-header">
+        <div>
+          <div class="modal-year-badge" id="modal-year"></div>
+          <div class="modal-outlet" id="modal-outlet"></div>
+          <div class="modal-claim" id="modal-claim"></div>
+        </div>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+
+  <!-- CHART -->
+  <section class="chart-section">
+    <div class="section-eyebrow">Distribuição por Categoria</div>
+    <h2>Quais tecnologias a mídia mais errou?</h2>
+    <div class="bar-chart mt-4">
+      <div class="bar-row">
+        <div class="bar-label">IA / ML</div>
+        <div class="bar-track"><div class="bar-fill ai" style="width:37.5%">6 casos (37%)</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Veículos Autônomos</div>
+        <div class="bar-track"><div class="bar-fill av" style="width:25%">4 casos (25%)</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Carros Elétricos</div>
+        <div class="bar-track"><div class="bar-fill ev" style="width:18.75%">3 casos (19%)</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Cripto / Blockchain</div>
+        <div class="bar-track"><div class="bar-fill crypto" style="width:12.5%">2 casos (12%)</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Exploração Espacial</div>
+        <div class="bar-track"><div class="bar-fill space" style="width:6.25%; background: var(--green-dim); color: var(--green); border: 1px solid rgba(106,191,105,0.2);">1 caso (6%)</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Smartphones</div>
+        <div class="bar-track"><div class="bar-fill phone" style="width:6.25%">1 caso (6%)</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATTERNS -->
+  <section class="patterns-section">
+    <div class="section-eyebrow">Análise de Padrões — Baseada em Pesquisa Acadêmica</div>
+    <h2>Os 6 padrões recorrentes de erro</h2>
+    <div class="patterns-grid">
+      <div class="pattern-card">
+        <div class="pattern-num">01</div>
+        <div class="pattern-title">Extrapolação de limites atuais</div>
+        <div class="pattern-text">Jornalistas ancoram no custo ou capacidade do momento presente e tratam isso como teto permanente — ignorando curvas de aprendizado exponenciais em baterias, computação e sensores. Cada tecnologia neste relatório foi declarada impossível com base em custos do presente.</div>
+        <div class="pattern-ref">↗ Relacionado: Funk (2017) sobre MIT Tech Review; Kriechbaum et al. (2021)</div>
+      </div>
+      <div class="pattern-card">
+        <div class="pattern-num">02</div>
+        <div class="pattern-title">Viés do status quo</div>
+        <div class="pattern-text">Assumir que o sistema existente é permanente em vez de transitório. O BlackBerry sempre dominaria o enterprise. Os motores a combustão jamais seriam substituídos. A lógica de negócios atual sempre seria a mesma. Cada uma dessas suposições era plausível na época e errada no longo prazo.</div>
+        <div class="pattern-ref">↗ Relacionado: Gao et al. (2021) sobre eficiência de investimento via mídia</div>
+      </div>
+      <div class="pattern-card">
+        <div class="pattern-num">03</div>
+        <div class="pattern-title">Confundir "difícil agora" com "impossível em princípio"</div>
+        <div class="pattern-text">Este é o erro lógico mais comum: uma categoria completamente diferente de alegação. Sob pressão de deadline e com incentivos para escrever com confiança, o espaço entre "genuinamente difícil no presente" e "fundamentalmente impossível" desapareceu em praticamente todos os 15 casos.</div>
+        <div class="pattern-ref">↗ Relacionado: Bareis et al. (2023) sobre "breakthrough syndrome"</div>
+      </div>
+      <div class="pattern-card">
+        <div class="pattern-num">04</div>
+        <div class="pattern-title">A falácia de um único fracasso</div>
+        <div class="pattern-text">A reportagem do NYT sobre a Tesla, o obituário da Argo AI pelo TechCrunch — um ponto de dados tratado como prova estrutural. Isso confunde "uma empresa falhou" com "a tecnologia é impossível". Pesquisa de Sodhi et al. (2022) documenta esse padrão sistematicamente em blockchain, IoT e IA.</div>
+        <div class="pattern-ref">↗ Relacionado: Sodhi et al. (2022) sobre tecnologias emergentes em supply chain</div>
+      </div>
+      <div class="pattern-card">
+        <div class="pattern-num">05</div>
+        <div class="pattern-title">Subestimar o investimento composto</div>
+        <div class="pattern-text">Tecnologias com US$ 100 bilhões+ de capital por trás delas encontram soluções que pareciam impossíveis. Os preços das baterias de lítio caíram 70% em 7 anos — não por mágica, mas pelo efeito de bilhões em P&D. A análise de Birch (2022) mostra como "expectativas ficcionais" do VC, quando bem calibradas, podem criar realidades.</div>
+        <div class="pattern-ref">↗ Relacionado: Birch (2022), Dai et al. (2020) sobre mídia e inovação</div>
+      </div>
+      <div class="pattern-card">
+        <div class="pattern-num">06</div>
+        <div class="pattern-title">Falhas na psicologia do consumidor</div>
+        <div class="pattern-text">Assumir que a hesitação atual de adoção é resistência comportamental permanente. Pesquisas acadêmicas (Liu et al., 2014; He & Tian, 2013) mostram que a cobertura da mídia modifica ativamente as expectativas dos investidores e do público — criando profecias autorrealizáveis tanto de euforia quanto de decepção.</div>
+        <div class="pattern-ref">↗ Relacionado: Liu et al. (2014), Shi & Herniman (2022)</div>
+      </div>
+    </div>
+  </section>
+
+
+</div><!-- /container -->
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="theme-switcher" id="theme-switcher">
+        <button class="theme-btn" onclick="toggleThemeMenu()" id="theme-btn">
+          <span class="theme-icon" id="theme-icon">💻</span>
+          <span id="theme-label">Sistema</span>
+          <span class="theme-chevron">▲</span>
+        </button>
+        <div class="theme-menu" id="theme-menu">
+          <button class="theme-option" data-theme="light" onclick="setTheme('light')">
+            <span class="opt-icon">☀️</span> Light
+            <span class="opt-check">✓</span>
+          </button>
+          <button class="theme-option" data-theme="dark" onclick="setTheme('dark')">
+            <span class="opt-icon">🌙</span> Dark
+            <span class="opt-check">✓</span>
+          </button>
+          <button class="theme-option active" data-theme="system" onclick="setTheme('system')">
+            <span class="opt-icon">💻</span> Sistema
+            <span class="opt-check">✓</span>
+          </button>
+        </div>
+      </div>
+      <div>
+        Relatório compilado com base em pesquisa jornalística e documentação acadêmica (2010–2024).<br>
+        Fontes: NYT, TechCrunch, MIT Technology Review, Business Insider, The Guardian, Wired, The Atlantic, Forbes, The Economist, Bloomberg.<br>
+        Referências acadêmicas: Funk (2017), Dai et al. (2020), Birch (2022), Kriechbaum et al. (2021), Sodhi et al. (2022), Liu et al. (2014), Shi &amp; Herniman (2022).
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function openModal(card) {
+    const body = card.querySelector('.card-body').innerHTML;
+    const year = card.querySelector('.card-year').textContent;
+    const outlet = card.querySelector('.card-outlet').textContent;
+    const claim = card.querySelector('.card-claim').textContent;
+    const catClass = [...card.classList].find(c => c.startsWith('cat-'));
+    const cat = catClass ? catClass.replace('cat-', '') : '';
+
+    const yearEl = document.getElementById('modal-year');
+    yearEl.textContent = year;
+    yearEl.className = 'modal-year-badge';
+    yearEl.style.color = getComputedStyle(card.querySelector('.card-year')).color;
+
+    document.getElementById('modal-outlet').textContent = outlet;
+    document.getElementById('modal-outlet').style.color = getComputedStyle(card.querySelector('.card-outlet')).color;
+    document.getElementById('modal-claim').textContent = claim;
+    document.getElementById('modal-body').innerHTML = body;
+
+    document.getElementById('modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOutside(e) {
+    if (e.target === document.getElementById('modal-overlay')) closeModal();
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // Filter logic
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      const cards = document.querySelectorAll('.card');
+      let visible = 0;
+      cards.forEach(card => {
+        if (cat === 'all' || card.dataset.cat === cat) {
+          card.classList.remove('hidden');
+          visible++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+      document.getElementById('count-badge').textContent = `${visible} caso${visible !== 1 ? 's' : ''}`;
+    });
+  });
+
+  // ─── THEME SWITCHER ───
+  const themeIcons = { light: '☀️', dark: '🌙', system: '💻' };
+  const themeLabels = { light: 'Light', dark: 'Dark', system: 'Sistema' };
+
+  function applyTheme(theme) {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const resolved = theme === 'system' ? (prefersDark ? 'dark' : 'light') : theme;
+    document.documentElement.setAttribute('data-theme', resolved);
+    document.getElementById('theme-icon').textContent = themeIcons[theme];
+    document.getElementById('theme-label').textContent = themeLabels[theme];
+    document.querySelectorAll('.theme-option').forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.theme === theme);
+    });
+    localStorage.setItem('theme', theme);
+  }
+
+  function setTheme(theme) {
+    applyTheme(theme);
+    closeThemeMenu();
+  }
+
+  function toggleThemeMenu() {
+    document.getElementById('theme-switcher').classList.toggle('open');
+  }
+
+  function closeThemeMenu() {
+    document.getElementById('theme-switcher').classList.remove('open');
+  }
+
+  document.addEventListener('click', e => {
+    if (!document.getElementById('theme-switcher').contains(e.target)) closeThemeMenu();
+  });
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (localStorage.getItem('theme') === 'system') applyTheme('system');
+  });
+
+  // Init
+  applyTheme(localStorage.getItem('theme') || 'system');
+
+  // Animate bars on scroll
+  const bars = document.querySelectorAll('.bar-fill');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.transition = 'width 1s cubic-bezier(0.4,0,0.2,1)';
+      }
+    });
+  }, { threshold: 0.3 });
+  bars.forEach(bar => observer.observe(bar));
+</script>
+</body>
+</html>
